@@ -26,11 +26,11 @@ namespace RockeyProject
 		{
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
-					Configuration["Data:SportStoreProducts:ConnectionString"]));
+					Configuration["Data:RockeyProjectProducts:ConnectionString"]));
 
 			services.AddDbContext<AppIdentityDbContext>(options =>
 				options.UseSqlServer(
-					Configuration["Data:SportStoreIdentity:ConnectionString"]));
+					Configuration["Data:RockeyProjectIdentity:ConnectionString"]));
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppIdentityDbContext>()

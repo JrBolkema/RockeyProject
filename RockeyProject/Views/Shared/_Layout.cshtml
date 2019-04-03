@@ -10,10 +10,18 @@
     <title>RockeyProject</title>
 </head>
 <body>
+    
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
         <div class="row">
-            <a class="col navbar-brand" href="#">SPORTS STORE</a>
-            <div class="col-4 text-right">
+            <a class="col navbar-brand" href="#">Rockey Project</a>
+            <div class="col-8 text-center">
+                <a class="col align-middle" href="#">Login</a>
+                <a class="col align-middle" href="#">Products</a>
+                <a class="col align-middle" href="#">Orders</a>
+                <a class="col align-middle" href="#">Contact</a>
+                <a class="col align-middle" href="#">About</a>
+            </div>
+            <div class="col text-right">
                 @await Component.InvokeAsync("CartSummary")
             </div>
         </div>
@@ -23,6 +31,7 @@
             @await Component.InvokeAsync("NavigationMenu")
         </div>
         <div class="col-9">
+
             @RenderBody()
         </div>
     </div>
