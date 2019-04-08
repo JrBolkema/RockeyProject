@@ -51,11 +51,11 @@ namespace RockeyProject.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
-		public IActionResult SeedDatabase()
-		{
-			SeedData.EnsurePopulated(HttpContext.RequestServices);
-			return RedirectToAction(nameof(Index));
-		}
+		//[HttpPost]
+		//public IActionResult SeedDatabase()
+		//{
+		//	SeedData.EnsurePopulated(HttpContext.RequestServices);
+		//	return RedirectToAction(nameof(Index));
+		//}
 	}
 }

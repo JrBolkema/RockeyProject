@@ -21,6 +21,7 @@ namespace RockeyProject.Controllers
 			signInManager = signInMgr;
 			IdentitySeedData.EnsurePopulated(userMgr).Wait();
 		}
+		
 
 		[AllowAnonymous]
 		public ViewResult Login(string returnUrl)

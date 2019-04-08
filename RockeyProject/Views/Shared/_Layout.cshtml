@@ -10,30 +10,24 @@
     <title>RockeyProject</title>
 </head>
 <body>
-    
+
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
         <div class="row">
             <a class="col navbar-brand" href="#">Rockey Project</a>
             <div class="col-8 text-center">
-                <a class="col align-middle" href="#">Login</a>
-                <a class="col align-middle" href="#">Products</a>
-                <a class="col align-middle" href="#">Orders</a>
-                <a class="col align-middle" href="#">Contact</a>
-                <a class="col align-middle" href="#">About</a>
+
+                <a class="btn-lg align-middle" href="@Url.Action("Login","Account")">Login</a>
+                <a class="btn-lg align-middle" href="@Url.Action("List","Product")">Products</a>
+                <a class="btn-lg align-middle" href="@Url.Action("List","Order")">Orders</a>
+                <a class="btn-lg align-middle" href="@Url.Action("Contact","Home")">Contact</a>
+                <a class="btn-lg align-middle" href="@Url.Action("About","Home")">About</a>
             </div>
             <div class="col text-right">
                 @await Component.InvokeAsync("CartSummary")
             </div>
         </div>
     </div>
-    <div class="row m-1 p-1">
-        <div id="categories" class="col-3">
-            @await Component.InvokeAsync("NavigationMenu")
-        </div>
-        <div class="col-9">
-
-            @RenderBody()
-        </div>
-    </div>
+    <div class="col-11" >@RenderBody()</div>
+   
 </body>
 </html>

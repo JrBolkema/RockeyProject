@@ -10,10 +10,10 @@ namespace RockeyProject.Models
 	public static class SeedData
 	{
 
-		public static void EnsurePopulated(IServiceProvider services)
+		public static void EnsurePopulated(IApplicationBuilder services)
 		{
-			ApplicationDbContext context = services.GetRequiredService<ApplicationDbContext>();
-			//context.Database.Migrate();
+			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+			context.Database.Migrate();
 			if (!context.Products.Any())
 			{
 				context.Products.AddRange(

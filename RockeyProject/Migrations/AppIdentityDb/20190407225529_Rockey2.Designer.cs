@@ -11,7 +11,7 @@ using System;
 namespace RockeyProject.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20190403212301_Rockey2")]
+    [Migration("20190407225529_Rockey2")]
     partial class Rockey2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
