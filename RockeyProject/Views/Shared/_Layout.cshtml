@@ -7,27 +7,39 @@
           asp-href-include="/lib/bootstrap/dist/**/*.min.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
+    @RenderSection("Styles", required: false)
     <title>RockeyProject</title>
 </head>
 <body>
 
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
-        <div class="row">
-            <a class="col navbar-brand" href="#">Rockey Project</a>
-            <div class="col-8 text-center">
-
-                <a class="btn-lg align-middle" href="@Url.Action("Login","Account")">Login</a>
-                <a class="btn-lg align-middle" href="@Url.Action("List","Product")">Products</a>
-                <a class="btn-lg align-middle" href="@Url.Action("List","Order")">Orders</a>
-                <a class="btn-lg align-middle" href="@Url.Action("Contact","Home")">Contact</a>
-                <a class="btn-lg align-middle" href="@Url.Action("About","Home")">About</a>
-            </div>
-            <div class="col text-right">
-                @await Component.InvokeAsync("CartSummary")
+        <div class="row"> 
+            <div class="col text-center align-middle">
+                <a class="float-left navbar-brand" href="/Home/Homepage">Rockey Project</a>
+                <a class="btn-lg m-0" href="@Url.Action("List","Product")">Products</a>
+                <a class="btn-lg m-0" href="@Url.Action("List","Order")">Orders</a>
+                <a class="btn-lg m-0" href="@Url.Action("Contact","Home")">Contact Us</a>
+                <a class="btn-lg m-0" href="@Url.Action("About","Home")">About</a>
+                <a class="btn float-right" href="@Url.Action("Login","Account")">Login</a>
+                <a class="btn float-right btn-primary" href="@Url.Action("Login","Account")">Sign Up</a>
+                <div class="float-right text-right m-0">
+                    @await Component.InvokeAsync("CartSummary")
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-11" >@RenderBody()</div>
+    <div class="col-11" >
+        @RenderBody()
+    </div>
+    <footer>
+        <a href="#">Homepage</a>
+        <a href="#">Products</a>
+        <a href="#">Orders</a>
+        <a href="#">Contact Us</a>
+        <a href="#">About</a>
+        <a href="#">Login</a>
+
+    </footer>
    
 </body>
 </html>

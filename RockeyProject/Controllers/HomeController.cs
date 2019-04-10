@@ -25,5 +25,10 @@ namespace RockeyProject.Controllers
 		{
 			return View();
 		}
+		[AllowAnonymous]
+		public ViewResult Homepage()
+		{
+			return View();
+		}
 	}
 }

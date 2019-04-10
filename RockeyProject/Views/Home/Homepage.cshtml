@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @section Styles
+        {
+        <style type="text/css">
+            .bg {
+                background-image:url("~/lib/Photos/Background.jpeg");
+                height: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
+    }
+}
+
+<div>
+    <h2 class="text-center">Welcome to Rockey's Cleaning Supplies</h2>
+    <p>Windows so clean you will run into them!</p>
+</div>
+
+
+<div class="mx-auto">
+    <a class="btn-lg btn-primary" href="/Product/List">View our Products!</a>
+    <p class="py-5 text-center">This example creates a full page background image. Try to resize the browser window to see how it always will cover the full screen (when scrolled to top), and that it scales nicely on all screen sizes.</p>
+
+</div>
+
+
