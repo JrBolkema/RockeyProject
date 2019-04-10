@@ -7,10 +7,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Razor.Runtime;
 using RockeyProject.Models;
 
-namespace RockeyProject.TagHelpers
+namespace RockeyProject.Infrastructure
 {
 	// You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
-	[HtmlTargetElement("about-employee")]
+	[HtmlTargetElement("AboutEmployee")]
 	public class AboutEmployeeTagHelper : TagHelper
 	{
 		public Employee Employee { get; set; }
