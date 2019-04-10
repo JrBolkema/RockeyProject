@@ -3,13 +3,26 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Data.SqlClient;
 
 namespace RockeyProject.Models
 {
 
 	public static class SeedData
 	{
+		public static void Depopulate(IApplicationBuilder services)
+		{
+			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
+			{
+				con.Open();
+				string sqlTrunc = "DELETE FROM Products";
 
+				SqlCommand cmd = new SqlCommand(sqlTrunc, con);
+				cmd.ExecuteNonQuery();
+				con.Close();
+			}
+		}
 		public static void EnsurePopulated(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
@@ -145,7 +158,7 @@ namespace RockeyProject.Models
 						Category = "Cleaning Liquids",
 						Price = 60
 					}
-
+					
 				);
 				context.SaveChanges();
 			}

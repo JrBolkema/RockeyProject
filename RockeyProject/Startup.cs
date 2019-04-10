@@ -64,7 +64,11 @@ namespace RockeyProject
 			{
 				routes.MapRoute(name: "Error", template: "Error",
 					defaults: new { controller = "Error", action = "Error" });
-
+				routes.MapRoute(
+					name: "Default",
+					template: "",
+					defaults: new { controller = "Home", action = "Homepage" }
+				);
 				routes.MapRoute(
 					name: null,
 					template: "{category}/Page{productPage:int}",
@@ -90,7 +94,7 @@ namespace RockeyProject
 
 				routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
 			});
-
+			SeedData.Depopulate(app);
 			SeedData.EnsurePopulated(app);
 			//IdentitySeedData.EnsurePopulated(app);
 		}
