@@ -13,6 +13,7 @@ namespace RockeyProject.Models
 
 		public DbSet<Product> Products { get; set; }
 		public DbSet<Order> Orders { get; set; }
+		public DbSet<Employee> Employees { get; set; }
 	}
 
 	public class ApplicationDbContextFactory

@@ -1,0 +1,8 @@
+﻿body {
+    background-image: url("/lib/Photos/Background.jpeg");
+    /*background: url("/lib/Photos/Background.jpeg") no-repeat center center fixed*/
+    background-position: center;
+    /*background-repeat: no-repeat;*/
+    background-size: cover;
+    
+}

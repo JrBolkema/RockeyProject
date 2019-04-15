@@ -2,21 +2,15 @@
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @*@section Styles
+    @section Styles
         {
-        <style type="text/css">
-            .bg {
-                background-image:url("~/lib/Photos/Background.jpeg");
-                height: 100%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-            }
-        </style>
-    }*@
+        <link rel="stylesheet" href="~/lib/Stylesheets/Homepage.css"  type="text/css">
+            
+        
+    }
 }
 
-        <div class="mx-auto d-block text-center align-middle">
+        <div class="mx-auto d-block text-center align-middle bg">
             <h2 class="">Welcome to Rockey's Cleaning Supplies</h2>
             <p>Windows so clean you will run into them!</p>
             <a class="btn-lg btn-primary" href="/Product/List">View our Products!</a>

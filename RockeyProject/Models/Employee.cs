@@ -16,13 +16,13 @@ namespace RockeyProject.Models
 		public string Photo { get; set; }
 		public Employee(string FName,string LName, string PhoneNumberParamater,string PositionParameter)
 		{
-			FName = FirstName;
-			LName = LastName;
+			FirstName = FName;
+			LastName = LName;
 			Email = $"{FName}.{LName}@Rockeys.com";
 			FullName = $"{FName} {LName}";
 			Photo = $"{FName}.png";
-			PhoneNumberParamater = PhoneNumber;
-			PositionParameter = Position;
+			PhoneNumber = PhoneNumberParamater;
+			Position = PositionParameter;
 
 		}
 	}

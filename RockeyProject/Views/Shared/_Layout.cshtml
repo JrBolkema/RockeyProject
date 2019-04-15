@@ -7,7 +7,10 @@
           asp-href-include="/lib/bootstrap/dist/**/*.min.css"
           asp-href-exclude="**/*-reboot*,**/*-grid*" />
     <link rel="stylesheet" asp-href-include="/lib/fontawesome/css/*.css" />
-    @RenderSection("Styles", required: false)
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
     <title>RockeyProject</title>
 </head>
 <body>
@@ -32,7 +35,7 @@
     <div class="col-11" >
         @RenderBody()
     </div>
-    <footer class="footer fixed-bottom">
+    <footer class="footer fixed-bottom bg-faded">
         
         @await  Html.PartialAsync("Footer")  
     </footer>

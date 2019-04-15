@@ -15,4 +15,8 @@
 
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\lib\Stylesheets\Homepage.css" />
+  </ItemGroup>
+
 </Project>

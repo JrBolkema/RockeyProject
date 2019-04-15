@@ -35,6 +35,10 @@ namespace RockeyProject.Models
 			//context.Database.Migrate();
 			if (!context.Products.Any())
 			{
+				//context.Employees.AddRange(
+				//	new Employee("Jamal", "Murray", "303-270-5428", "CFO")
+				//	//new Employee("","","","")
+				//	);
 				context.Products.AddRange(
 					new Product
 					{

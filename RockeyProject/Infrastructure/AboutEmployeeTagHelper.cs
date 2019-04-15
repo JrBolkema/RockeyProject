@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Razor.Runtime.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.AspNetCore.Razor.Runtime;
 using RockeyProject.Models;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace RockeyProject.Infrastructure
 {
@@ -13,10 +14,12 @@ namespace RockeyProject.Infrastructure
 	[HtmlTargetElement("AboutEmployee")]
 	public class AboutEmployeeTagHelper : TagHelper
 	{
+		
 		public Employee Employee { get; set; }
 		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 
+		//	var EmployeeFullName = For.ModelExplorer.GetExplorerForProperty(Employee.FullName);
 			output.Content.AppendHtml("<div class='col-2 d-inline-block'>");
 			output.Content.AppendHtml($"<img src='{Employee.Photo}' alt='{Employee.FullName}' height='150' width='150'>");
 			output.Content.AppendHtml($"<p class='m-0'>{Employee.FullName}</p>");
