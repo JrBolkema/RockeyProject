@@ -16,10 +16,16 @@ namespace RockeyProject.Models
 			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
 			{
 				con.Open();
-				string sqlTrunc = "DELETE FROM Products";
 
+				string sqlTrunc2 = "DELETE FROM CartLine";
+				SqlCommand cmd2 = new SqlCommand(sqlTrunc2, con);
+				cmd2.ExecuteNonQuery();
+
+				string sqlTrunc = "DELETE FROM Products";
 				SqlCommand cmd = new SqlCommand(sqlTrunc, con);
 				cmd.ExecuteNonQuery();
+
+				
 				con.Close();
 			}
 		}
