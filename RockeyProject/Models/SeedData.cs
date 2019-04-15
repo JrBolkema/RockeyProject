@@ -163,7 +163,15 @@ namespace RockeyProject.Models
 						Description = "Since your teen won't do it",
 						Category = "Cleaning Liquids",
 						Price = 60
+					},
+					new Product
+					{
+						Name = "Peabody-5000 Hourly Rental",
+						Description = "Shoots at 5000 Peas per second",
+						Category = "Rentals",
+						Price = 100
 					}
+				
 					
 				);
 				context.SaveChanges();
