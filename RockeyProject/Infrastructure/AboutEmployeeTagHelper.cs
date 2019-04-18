@@ -21,7 +21,7 @@ namespace RockeyProject.Infrastructure
 
 		//	var EmployeeFullName = For.ModelExplorer.GetExplorerForProperty(Employee.FullName);
 			output.Content.AppendHtml("<div class='col-2 d-inline-block'>");
-			output.Content.AppendHtml($"<img src='{Employee.Photo}' alt='{Employee.FullName}' height='150' width='150'>");
+			output.Content.AppendHtml($"<img src=/lib/Photos/{Employee.Photo} alt='{Employee.FullName}' height='140' width='180'>");
 			output.Content.AppendHtml($"<p class='m-0'>{Employee.FullName}</p>");
             output.Content.AppendHtml($"<p class='m-0'>{Employee.Position}</p>");
             output.Content.AppendHtml($"<p class='m-0'>{Employee.Email}</p>");

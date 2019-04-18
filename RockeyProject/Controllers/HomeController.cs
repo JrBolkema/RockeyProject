@@ -40,5 +40,10 @@ namespace RockeyProject.Controllers
 		{
 			return View();
 		}
+		[AllowAnonymous]
+		public VirtualFileResult Peabody()
+		{
+			return File("~lib/PDFs/Peabody.pdf","application/pdf");
+		}
 	}
 }
