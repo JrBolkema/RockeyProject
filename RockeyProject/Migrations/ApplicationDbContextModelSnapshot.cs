@@ -40,6 +40,28 @@ namespace RockeyProject.Migrations
                     b.ToTable("CartLine");
                 });
 
+            modelBuilder.Entity("RockeyProject.Models.Employee", b =>
+                {
+                    b.Property<int>("EmployeeID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<string>("Photo");
+
+                    b.Property<string>("Position");
+
+                    b.HasKey("EmployeeID");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("RockeyProject.Models.Order", b =>
                 {
                     b.Property<int>("OrderID")

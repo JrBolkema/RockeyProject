@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "About";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Employee Test = new Employee("Mr", "Rocky", "303-314-1551", "CEO and President");
+    @model EmployeeListViewModel;
 }
 
     <!--TODO: Use a tag helper for this crap smh-->
@@ -11,8 +11,12 @@
         <h2>About Us</h2>
         <h3>Executives</h3>
         <div>
-            <AboutEmployee employee=@Test></AboutEmployee>
-            <div class="col-2 d-inline-block">
+            @*<AboutEmployee employee=@Test></AboutEmployee>*@
+            @foreach (var p in Model.Employee)
+            {
+              <AboutEmployee employee="@p"></AboutEmployee>  
+            }
+            @*<div class="col-2 d-inline-block">
                 <p class="m-0">Nikola Jokic</p>
                 <p class="m-0">Vice President</p>
             </div>
@@ -41,9 +45,9 @@
                 <p class="m-0">Sales Intern</p>
             </div>
         </div>
-        <h3>What We Believe</h3>
+        <h3>What We Believe</h3>*@
+        </div>
 
 
-
-    </div>
+        </div>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ namespace RockeyProject.Models
 {
 	public class Employee
 	{
+		public int EmployeeID { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 		public string FullName { get; set; }
@@ -24,6 +26,10 @@ namespace RockeyProject.Models
 			PhoneNumber = PhoneNumberParamater;
 			Position = PositionParameter;
 
+		}
+		public Employee()
+		{
+		//	FirstName = "Not Working";
 		}
 	}
 }

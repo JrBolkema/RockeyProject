@@ -25,20 +25,37 @@ namespace RockeyProject.Models
 				SqlCommand cmd = new SqlCommand(sqlTrunc, con);
 				cmd.ExecuteNonQuery();
 
-				
+				string sqlTrunc3 = "DELETE FROM Employees";
+				SqlCommand cmd3 = new SqlCommand(sqlTrunc3, con);
+				cmd3.ExecuteNonQuery();
+
 				con.Close();
 			}
 		}
 		public static void EnsurePopulated(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
-			//context.Database.Migrate();
+			context.Database.Migrate();
+		
+
+
+			if (!context.Employees.Any())
+			{
+				context.Employees.AddRange(
+					new Employee("Mr", "Rocky", "303-314-1551", "CEO and President"),
+					new Employee("Jamal", "Murray", "303-270-5428", "CFO"),
+					new Employee("Nikola", "Jokic", "303-150-5428", "Vice President"),
+					new Employee("Gary", "Harris", "303-140-5428", "CTO"),
+					new Employee("Monte", "Morris", "303-110-5428", "Sales Team Leader"),
+					new Employee("Malik", "Beasley", "303-250-5428", "Traveling Salesman"),
+					new Employee("Mason", "Plumlee", "303-240-5428", "Sales Intern")
+					//new Employee("","","","")
+					);
+			}
+			
 			if (!context.Products.Any())
 			{
-				//context.Employees.AddRange(
-				//	new Employee("Jamal", "Murray", "303-270-5428", "CFO")
-				//	//new Employee("","","","")
-				//	);
+				
 				context.Products.AddRange(
 					new Product
 					{

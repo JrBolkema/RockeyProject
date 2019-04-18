@@ -40,6 +40,7 @@ namespace RockeyProject
 			services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 			services.AddTransient<IOrderRepository, EFOrderRepository>();
+			services.AddTransient<IEmployeeRepository, EFEmployeeRepository>();
 			services.AddMvc();
 			services.AddMemoryCache();
 			services.AddSession();
