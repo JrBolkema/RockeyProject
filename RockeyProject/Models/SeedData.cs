@@ -13,6 +13,7 @@ namespace RockeyProject.Models
 		public static void Depopulate(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+			
 			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
 			{
 				con.Open();

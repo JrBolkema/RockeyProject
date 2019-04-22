@@ -35,7 +35,7 @@ namespace RockeyProject
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppIdentityDbContext>()
 				.AddDefaultTokenProviders();
-
+				//.AddUserManager<IdentityUser>();
 			services.AddTransient<IProductRepository, EFProductRepository>();
 			services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -59,6 +59,7 @@ namespace RockeyProject
 			}
 
 			app.UseStaticFiles();
+			//app.UseIdentity();
 			app.UseSession();
 			app.UseAuthentication();
 			app.UseMvc(routes =>
@@ -95,8 +96,8 @@ namespace RockeyProject
 
 				routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
 			});
-			SeedData.Depopulate(app);
-			SeedData.EnsurePopulated(app);
+			//SeedData.Depopulate(app);
+			//SeedData.EnsurePopulated(app);
 			//IdentitySeedData.EnsurePopulated(app);
 		}
 	}
