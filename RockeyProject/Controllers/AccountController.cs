@@ -34,7 +34,11 @@ namespace RockeyProject.Controllers
 				ReturnUrl = returnUrl
 			});
 		}
-
+		[AllowAnonymous]
+		public ViewResult Signup()
+		{
+			return View();
+		}
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
@@ -63,5 +67,8 @@ namespace RockeyProject.Controllers
 			await signInManager.SignOutAsync();
 			return Redirect(returnUrl);
 		}
+
+
+	
 	}
 }

@@ -5,10 +5,26 @@ using System.Collections.Generic;
 
 namespace RockeyProject.Migrations
 {
-    public partial class RockeyProject1 : Migration
+    public partial class Rockey1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    CustomerID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.CustomerID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
@@ -107,6 +123,9 @@ namespace RockeyProject.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CartLine");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Employees");

@@ -10,6 +10,8 @@ using RockeyProject.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+//TODO: add signup view, make compatible for both new employees and new customers
+//TODO: hook sign up view to database
 
 namespace RockeyProject
 {

@@ -40,6 +40,24 @@ namespace RockeyProject.Migrations
                     b.ToTable("CartLine");
                 });
 
+            modelBuilder.Entity("RockeyProject.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("CustomerID");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("RockeyProject.Models.Employee", b =>
                 {
                     b.Property<int>("EmployeeID")

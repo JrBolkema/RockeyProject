@@ -36,8 +36,8 @@ namespace RockeyProject.Models
 		public static void EnsurePopulated(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
-			context.Database.Migrate();
-		
+			//context.Database.Migrate();
+			
 
 
 			if (!context.Employees.Any())

@@ -11,8 +11,8 @@ using System;
 namespace RockeyProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190416015816_RockeyProject1")]
-    partial class RockeyProject1
+    [Migration("20190423041206_Rockey1")]
+    partial class Rockey1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,6 +39,24 @@ namespace RockeyProject.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("CartLine");
+                });
+
+            modelBuilder.Entity("RockeyProject.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Password");
+
+                    b.HasKey("CustomerID");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("RockeyProject.Models.Employee", b =>
