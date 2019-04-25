@@ -13,31 +13,35 @@ namespace RockeyProject.Controllers
 	{
 		private UserManager<IdentityUser> userManager;
 		private SignInManager<IdentityUser> signInManager;
-		
+		private ICustomerRepository repository;
 
-		public AccountController(UserManager<IdentityUser> userMgr,
-				SignInManager<IdentityUser> signInMgr)
+		
+		public AccountController(UserManager<IdentityUser> userMgr,SignInManager<IdentityUser> signInMgr, ICustomerRepository repo)
 		{
-			
-			userManager= userMgr;
+			repository = repo;
+			userManager = userMgr;
 			signInManager = signInMgr;
 			
 			IdentitySeedData.EnsurePopulated(userMgr).Wait();
+			
 		}
 		
 
 		[AllowAnonymous]
-		public ViewResult Login(string returnUrl)
+		[HttpPost]
+		public IActionResult Signup(Customer customer,UserManager<IdentityUser> userManager)
 		{
-			return View(new LoginModel
+			if (ModelState.IsValid)
 			{
-				ReturnUrl = returnUrl
-			});
-		}
-		[AllowAnonymous]
-		public ViewResult Signup()
-		{
-			return View();
+				repository.SaveCustomer(customer,userManager);
+				TempData["message"] = $"Thank you {customer.FirstName}, your account has been created";
+				return RedirectToAction("List", "Product");
+			}
+			else
+			{
+				// there is something wrong with the data values
+				return RedirectToAction("Signup", "Home");
+			}
 		}
 		[HttpPost]
 		[AllowAnonymous]
@@ -60,6 +64,10 @@ namespace RockeyProject.Controllers
 			}
 			ModelState.AddModelError("", "Invalid name or password");
 			return View(loginModel);
+		}
+		public IActionResult Create()
+		{
+			return RedirectToAction("Signup","Home");
 		}
 
 		public async Task<RedirectResult> Logout(string returnUrl = "/")

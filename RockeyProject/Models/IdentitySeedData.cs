@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace RockeyProject.Models
 {
@@ -15,9 +16,9 @@ namespace RockeyProject.Models
 
 		public static async Task EnsurePopulated(UserManager<IdentityUser> userManager) //UserManager<IdentityUser> userManager
 		{
-
-			//UserManager<IdentityUser> userManager = services.ApplicationServices.GetRequiredService(UserManager<T>);
-			//ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+			
+			
+			//Using the employee tabble in the RockeyProject Database to populate Identity Database.
 			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
 			{
 				string queryString = "SELECT FirstName,LastName FROM dbo.Employees";
@@ -39,9 +40,6 @@ namespace RockeyProject.Models
 						{
 							user = new IdentityUser(Username);
 							await userManager.CreateAsync(user, adminPassword);
-
-
-
 						}
 					}
 				}

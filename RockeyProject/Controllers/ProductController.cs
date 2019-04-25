@@ -5,6 +5,7 @@ using RockeyProject.Models.ViewModels;
 
 namespace RockeyProject.Controllers
 {
+	[ResponseCache(Duration = 60)]
 
 	public class ProductController : Controller
 	{

@@ -13,24 +13,32 @@ namespace RockeyProject.Models
 		public static void Depopulate(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
-			
-			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
+			try
 			{
-				con.Open();
+				using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
+				{
+					con.Open();
 
-				string sqlTrunc2 = "DELETE FROM CartLine";
-				SqlCommand cmd2 = new SqlCommand(sqlTrunc2, con);
-				cmd2.ExecuteNonQuery();
+					string sqlTrunc2 = "DELETE FROM CartLine";
+					SqlCommand cmd2 = new SqlCommand(sqlTrunc2, con);
+					cmd2.ExecuteNonQuery();
 
-				string sqlTrunc = "DELETE FROM Products";
-				SqlCommand cmd = new SqlCommand(sqlTrunc, con);
-				cmd.ExecuteNonQuery();
+					string sqlTrunc = "DELETE FROM Products";
+					SqlCommand cmd = new SqlCommand(sqlTrunc, con);
+					cmd.ExecuteNonQuery();
 
-				string sqlTrunc3 = "DELETE FROM Employees";
-				SqlCommand cmd3 = new SqlCommand(sqlTrunc3, con);
-				cmd3.ExecuteNonQuery();
+					string sqlTrunc3 = "DELETE FROM Employees";
+					SqlCommand cmd3 = new SqlCommand(sqlTrunc3, con);
+					cmd3.ExecuteNonQuery();
 
-				con.Close();
+					con.Close();
+				}
+
+			}
+			catch (Exception ex)
+			{
+				ex.GetHashCode();
+				//new Exception("Error occurred when connecting to database");
 			}
 		}
 		public static void EnsurePopulated(IApplicationBuilder services)

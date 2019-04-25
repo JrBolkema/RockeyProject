@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace RockeyProject.Models
 {
@@ -21,9 +22,36 @@ namespace RockeyProject.Models
 			throw new NotImplementedException();
 		}
 
-		public void SaveCustomer(Customer Customer)
+		public async void SaveCustomer(Customer Customer,UserManager<IdentityUser> userManager)
 		{
-			throw new NotImplementedException();
+			if (Customer.CustomerID == 0)
+			{
+				context.Customers.Add(Customer);
+			}
+			else
+			{
+				IdentityUser user = await userManager.FindByIdAsync(Customer.Username);
+
+				if (user == null)
+				{
+					user = new IdentityUser(Customer.Username);
+					await userManager.CreateAsync(user, Customer.Password);
+
+
+
+				}
+				Customer dbEntry = context.Customers
+					.FirstOrDefault(p => p.CustomerID == Customer.CustomerID);
+				if (dbEntry != null)
+				{
+					dbEntry.Username = Customer.Username;
+					dbEntry.FirstName = Customer.FirstName;
+					dbEntry.LastName = Customer.LastName;
+					dbEntry.Email = Customer.Email;
+					dbEntry.Password = Customer.Password;
+				}
+			}
+			context.SaveChanges();
 		}
 	}
 }

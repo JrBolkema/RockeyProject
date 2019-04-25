@@ -45,5 +45,16 @@ namespace RockeyProject.Controllers
 		{
 			return File("~lib/PDFs/Peabody.pdf","application/pdf");
 		}
+		[AllowAnonymous]
+		public ViewResult Login(string returnUrl)
+		{
+			return View(new LoginModel
+			{
+				ReturnUrl = returnUrl
+			});
+		}
+		[AllowAnonymous]
+		public ViewResult Signup() => View("Signup", new Customer());
+
 	}
 }
