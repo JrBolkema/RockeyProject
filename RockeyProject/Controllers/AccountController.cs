@@ -29,7 +29,7 @@ namespace RockeyProject.Controllers
 
 		[AllowAnonymous]
 		[HttpPost]
-		public IActionResult Signup(Customer customer,UserManager<IdentityUser> userManager)
+		public IActionResult Signup(Customer customer)
 		{
 			if (ModelState.IsValid)
 			{

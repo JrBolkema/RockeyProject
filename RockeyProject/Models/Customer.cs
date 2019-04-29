@@ -22,5 +22,9 @@ namespace RockeyProject.Models
 		public string Email { get; set; }
 		[Required(ErrorMessage = "Please enter a password")]
 		public string Password { get; set; }
+		public Customer()
+		{
+
+		}
 	}
 }

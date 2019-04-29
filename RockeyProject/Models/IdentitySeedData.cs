@@ -13,10 +13,11 @@ namespace RockeyProject.Models
 	{
 		private const string adminUser = "Admin";
 		private const string adminPassword = "Secret123$";
+		//private static RoleManager<IdentityRole> roleManager;
 
 		public static async Task EnsurePopulated(UserManager<IdentityUser> userManager) //UserManager<IdentityUser> userManager
 		{
-			
+
 			
 			//Using the employee tabble in the RockeyProject Database to populate Identity Database.
 			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))

@@ -36,8 +36,8 @@ namespace RockeyProject
 
 			services.AddIdentity<IdentityUser, IdentityRole>()
 				.AddEntityFrameworkStores<AppIdentityDbContext>()
-				.AddDefaultTokenProviders()
-				.AddUserManager<IdentityUser>();
+				.AddDefaultTokenProviders();
+				//.AddUserManager<IdentityUser>();
 			services.AddTransient<IProductRepository, EFProductRepository>();
 			services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 			services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();

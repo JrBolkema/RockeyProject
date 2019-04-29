@@ -30,16 +30,16 @@ namespace RockeyProject.Models
 			}
 			else
 			{
-				IdentityUser user = await userManager.FindByIdAsync(Customer.Username);
+				//IdentityUser user = await userManager.FindByIdAsync(Customer.Username);
 
-				if (user == null)
-				{
-					user = new IdentityUser(Customer.Username);
-					await userManager.CreateAsync(user, Customer.Password);
+				//if (user == null)
+				//{
+				//	user = new IdentityUser(Customer.Username);
+				//	await userManager.CreateAsync(user, Customer.Password);
 
 
 
-				}
+				//}
 				Customer dbEntry = context.Customers
 					.FirstOrDefault(p => p.CustomerID == Customer.CustomerID);
 				if (dbEntry != null)
