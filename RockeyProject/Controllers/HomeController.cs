@@ -13,11 +13,12 @@ namespace RockeyProject.Controllers
     {
 		private IEmployeeRepository repository;
 
+		//Directs the index view
 		public IActionResult Index()
         {
             return View();
         }
-
+		// Returns the contact view
 		[AllowAnonymous]
 		public ViewResult Contact()
 		{
@@ -27,7 +28,7 @@ namespace RockeyProject.Controllers
 		{
 			repository = repo;
 		}
-
+		// Returns the about view, takes employees from database
 		[AllowAnonymous]
 		public ViewResult About(string category, int productPage = 1)
 			=> View(new EmployeeListViewModel
@@ -35,16 +36,22 @@ namespace RockeyProject.Controllers
 				Employee = repository.Employees
 					.OrderBy(p => p.EmployeeID),
 			});
+
+		// Returns Homepage view
 		[AllowAnonymous]
 		public ViewResult Homepage()
 		{
 			return View();
 		}
+
+		// Returns PDF of user manual
 		[AllowAnonymous]
 		public VirtualFileResult Peabody()
 		{
 			return File("~lib/PDFs/Peabody.pdf","application/pdf");
 		}
+
+		// Returns the login view
 		[AllowAnonymous]
 		public ViewResult Login(string returnUrl)
 		{
@@ -53,6 +60,8 @@ namespace RockeyProject.Controllers
 				ReturnUrl = returnUrl
 			});
 		}
+
+		// Redirects to signup view and creates a new customer for model
 		[AllowAnonymous]
 		public ViewResult Signup() => View("Signup", new Customer());
 

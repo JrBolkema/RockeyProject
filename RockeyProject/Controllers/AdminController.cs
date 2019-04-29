@@ -16,12 +16,15 @@ namespace RockeyProject.Controllers
 			repository = repo;
 		}
 
+		//Returns a list of all products 
 		public ViewResult Index() => View(repository.Products);
 
+		// Returns edit view given a product
 		public ViewResult Edit(int productId) =>
 			View(repository.Products
 				.FirstOrDefault(p => p.ProductID == productId));
-
+		
+		// Saves changes to the given product
 		[HttpPost]
 		public IActionResult Edit(Product product)
 		{
@@ -38,8 +41,10 @@ namespace RockeyProject.Controllers
 			}
 		}
 
+		// Returns view for creating a product
 		public ViewResult Create() => View("Edit", new Product());
 
+		// Deletes product given a product id
 		[HttpPost]
 		public IActionResult Delete(int productId)
 		{

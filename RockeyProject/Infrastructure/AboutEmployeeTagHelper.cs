@@ -10,16 +10,18 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace RockeyProject.Infrastructure
 {
-	// You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
+	
 	[HtmlTargetElement("AboutEmployee")]
 	public class AboutEmployeeTagHelper : TagHelper
 	{
 		
 		public Employee Employee { get; set; }
+
+		// creates html for an about section of an employee
 		public override void Process(TagHelperContext context, TagHelperOutput output)
 		{
 
-		//	var EmployeeFullName = For.ModelExplorer.GetExplorerForProperty(Employee.FullName);
+	
 			output.Content.AppendHtml("<div class='col-2 d-inline-block'>");
 			output.Content.AppendHtml($"<img src=/lib/Photos/{Employee.Photo} alt='{Employee.FullName}' height='140' width='180'>");
 			output.Content.AppendHtml($"<p class='m-0'>{Employee.FullName}</p>");

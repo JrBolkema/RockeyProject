@@ -15,7 +15,7 @@ namespace RockeyProject.Controllers
 		private SignInManager<IdentityUser> signInManager;
 		private ICustomerRepository repository;
 
-		
+		// Initiates all the stuff
 		public AccountController(UserManager<IdentityUser> userMgr,SignInManager<IdentityUser> signInMgr, ICustomerRepository repo)
 		{
 			repository = repo;
@@ -26,7 +26,7 @@ namespace RockeyProject.Controllers
 			
 		}
 		
-
+		// Directs to Signup view and check model data
 		[AllowAnonymous]
 		[HttpPost]
 		public IActionResult Signup(Customer customer)
@@ -43,6 +43,8 @@ namespace RockeyProject.Controllers
 				return RedirectToAction("Signup", "Home");
 			}
 		}
+
+		// Returns login view and checks logs them in or doesnt
 		[HttpPost]
 		[AllowAnonymous]
 		[ValidateAntiForgeryToken]
@@ -65,11 +67,14 @@ namespace RockeyProject.Controllers
 			ModelState.AddModelError("", "Invalid name or password");
 			return View(loginModel);
 		}
+
+		// Redirects to signup view
 		public IActionResult Create()
 		{
 			return RedirectToAction("Signup","Home");
 		}
 
+		// Logs user out
 		public async Task<RedirectResult> Logout(string returnUrl = "/")
 		{
 			await signInManager.SignOutAsync();

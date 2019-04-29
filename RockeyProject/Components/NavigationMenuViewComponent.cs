@@ -4,7 +4,7 @@ using RockeyProject.Models;
 
 namespace RockeyProject.Components
 {
-
+	// For Creating the nav bar for products
 	public class NavigationMenuViewComponent : ViewComponent
 	{
 		private IProductRepository repository;

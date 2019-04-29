@@ -17,6 +17,7 @@ namespace RockeyProject.Controllers
 			cart = cartService;
 		}
 
+		// Returns view of cart
 		public ViewResult Index(string returnUrl)
 		{
 			return View(new CartIndexViewModel
@@ -26,6 +27,7 @@ namespace RockeyProject.Controllers
 			});
 		}
 
+		// Adds a given product to the current cart
 		public RedirectToActionResult AddToCart(int productId, string returnUrl)
 		{
 			Product product = repository.Products
@@ -37,6 +39,7 @@ namespace RockeyProject.Controllers
 			return RedirectToAction("Index", new { returnUrl });
 		}
 
+		// Removes an item from cart given the product id
 		public RedirectToActionResult RemoveFromCart(int productId,
 				string returnUrl)
 		{

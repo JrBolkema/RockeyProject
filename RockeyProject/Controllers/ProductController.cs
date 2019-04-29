@@ -10,13 +10,16 @@ namespace RockeyProject.Controllers
 	public class ProductController : Controller
 	{
 		private IProductRepository repository;
+		//Determines how many items will appear per page
 		public int PageSize = 4;
 
+		//Repo init
 		public ProductController(IProductRepository repo)
 		{
 			repository = repo;
 		}
 
+		//Returns all products in a given category
 		public ViewResult List(string category, int productPage = 1)
 			=> View(new ProductsListViewModel
 			{

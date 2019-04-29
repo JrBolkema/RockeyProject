@@ -8,6 +8,7 @@ namespace RockeyProject.Components
 	{
 		private Cart cart;
 
+
 		public CartSummaryViewComponent(Cart cartService)
 		{
 			cart = cartService;

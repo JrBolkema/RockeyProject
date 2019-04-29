@@ -11,18 +11,21 @@ namespace RockeyProject.Controllers
 		private IOrderRepository repository;
 		private Cart cart;
 
+		//Initializing stuff
 		public OrderController(IOrderRepository repoService, Cart cartService)
 		{
 			repository = repoService;
 			cart = cartService;
 		}
 
+		//Redirects to a view of users orders given that they are logged in
 		[Authorize]
 		public ViewResult List() =>
 			View(repository.Orders.Where(o => !o.Shipped));
 
 		[HttpPost]
 		[Authorize]
+		//Marks an order as shipped given the ID
 		public IActionResult MarkShipped(int orderID)
 		{
 			Order order = repository.Orders
@@ -35,8 +38,10 @@ namespace RockeyProject.Controllers
 			return RedirectToAction(nameof(List));
 		}
 
+		//Redirects to creating a new order
 		public ViewResult Checkout() => View(new Order());
 
+		//Checks validity to return a view of cart
 		[HttpPost]
 		public IActionResult Checkout(Order order)
 		{
@@ -56,6 +61,7 @@ namespace RockeyProject.Controllers
 			}
 		}
 
+		//clears cart and displays succcess message
 		public ViewResult Completed()
 		{
 			cart.Clear();
