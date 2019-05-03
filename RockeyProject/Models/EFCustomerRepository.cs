@@ -51,7 +51,16 @@ namespace RockeyProject.Models
 					dbEntry.Password = Customer.Password;
 				}
 			}
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
 		}
 	}
 }

@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.SqlClient;
+using Microsoft.AspNetCore.Mvc;
+
+
 
 namespace RockeyProject.Models
 {
@@ -13,6 +16,8 @@ namespace RockeyProject.Models
 		public static void Depopulate(IApplicationBuilder services)
 		{
 			ApplicationDbContext context = services.ApplicationServices.GetRequiredService<ApplicationDbContext>();
+
+
 			try
 			{
 				using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
@@ -35,11 +40,12 @@ namespace RockeyProject.Models
 				}
 
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
-				ex.GetHashCode();
-				//new Exception("Error occurred when connecting to database");
+
+				throw;
 			}
+		
 		}
 		public static void EnsurePopulated(IApplicationBuilder services)
 		{

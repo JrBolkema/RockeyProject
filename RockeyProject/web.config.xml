@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<system.web>
+	<customErrors mode="On" >
+		<error statusCode="404" redirect="~/Home/Login" />
+	</customErrors>
+</system.web>
