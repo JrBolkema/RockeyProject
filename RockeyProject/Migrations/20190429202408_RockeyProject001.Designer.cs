@@ -11,8 +11,8 @@ using System;
 namespace RockeyProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190425151503_Initial")]
-    partial class Initial
+    [Migration("20190429202408_RockeyProject001")]
+    partial class RockeyProject001
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
