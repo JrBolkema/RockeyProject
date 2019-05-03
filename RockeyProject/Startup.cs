@@ -104,7 +104,7 @@ namespace RockeyProject
 				routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
 			});
 			//SeedData.Depopulate(app);
-			SeedData.EnsurePopulated(app);
+			//SeedData.EnsurePopulated(app);
 			//IdentitySeedData.EnsurePopulated(app);
 		}
 	}

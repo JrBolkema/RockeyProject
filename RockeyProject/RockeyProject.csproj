@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <ApplicationInsightsResourceId>/subscriptions/719b3216-f77b-4452-adf2-3e964e983249/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/RockeyProject</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/719b3216-f77b-4452-adf2-3e964e983249/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/RockeyProject</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,14 +12,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ServerManagement" Version="1.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.4" />
+    <PackageReference Include="Shared.Management.Objects.for.SQL.Server.2012.SP1" Version="11.0.3000" />
+    <PackageReference Include="Unofficial.Sql.Server.Management.Objects" Version="17.4.1" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
 
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\lib\Stylesheets\Homepage.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>
