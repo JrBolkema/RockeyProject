@@ -33,7 +33,17 @@ namespace RockeyProject.Models
 					dbEntry.Category = product.Category;
 				}
 			}
-			context.SaveChanges();
+
+			try
+			{
+				context.SaveChanges();
+
+			}
+			catch (System.Exception)
+			{
+
+				throw;
+			}
 		}
 
 		public Product DeleteProduct(int productID)

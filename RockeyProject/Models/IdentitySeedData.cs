@@ -18,34 +18,43 @@ namespace RockeyProject.Models
 		public static async Task EnsurePopulated(UserManager<IdentityUser> userManager) //UserManager<IdentityUser> userManager
 		{
 
-			
+
 			//Using the employee tabble in the RockeyProject Database to populate Identity Database.
-			using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
+			try
 			{
-				string queryString = "SELECT FirstName,LastName FROM dbo.Employees";
-				con.Open();
-				SqlCommand cmd = new SqlCommand(queryString,con);
-				SqlDataReader DataReader = cmd.ExecuteReader();
-
-				if (DataReader.HasRows)
+				using (SqlConnection con = new SqlConnection("Server=(localdb)\\MSSQLLocalDB;Database=RockeyProject;Trusted_Connection=True;MultipleActiveResultSets=true"))
 				{
-					while (DataReader.Read())
-					{
-						string FirstName = DataReader.GetString(0);
-						string LastName = DataReader.GetString(1);
-						
-						string Username = FirstName.Substring(0, Math.Min(FirstName.Length, 3)) + LastName.Substring(0, Math.Min(LastName.Length, 3));
-						IdentityUser user = await userManager.FindByIdAsync(Username);
+					string queryString = "SELECT FirstName,LastName FROM dbo.Employees";
+					con.Open();
+					SqlCommand cmd = new SqlCommand(queryString, con);
+					SqlDataReader DataReader = cmd.ExecuteReader();
 
-						if (user == null)
+					if (DataReader.HasRows)
+					{
+						while (DataReader.Read())
 						{
-							user = new IdentityUser(Username);
-							await userManager.CreateAsync(user, adminPassword);
+							string FirstName = DataReader.GetString(0);
+							string LastName = DataReader.GetString(1);
+
+							string Username = FirstName.Substring(0, Math.Min(FirstName.Length, 3)) + LastName.Substring(0, Math.Min(LastName.Length, 3));
+							IdentityUser user = await userManager.FindByIdAsync(Username);
+
+							if (user == null)
+							{
+								user = new IdentityUser(Username);
+								await userManager.CreateAsync(user, adminPassword);
+							}
 						}
 					}
+					DataReader.Close();
+					con.Close();
 				}
-				DataReader.Close();
-				con.Close();
+
+			}
+			catch (Exception)
+			{
+
+				throw;
 			}
 		}
 	}

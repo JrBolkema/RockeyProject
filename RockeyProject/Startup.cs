@@ -10,8 +10,9 @@ using RockeyProject.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-//TODO: add signup view, make compatible for both new employees and new customers
-//TODO: hook sign up view to database
+//Questions
+//	get errors to redirect to error view
+//	get unauthorized users redirected to login when clicking order
 
 namespace RockeyProject
 {
@@ -53,10 +54,11 @@ namespace RockeyProject
 		{
 			if (env.IsDevelopment())
 			{
-				app.UseDeveloperExceptionPage();
-				//app.UseExceptionHandler("/Error/Error");
-
-				app.UseStatusCodePages();
+				//app.UseDeveloperExceptionPage();
+				app.UseStatusCodePagesWithReExecute("/Error/Error");
+				app.UseExceptionHandler("/Error/Error");
+				
+				//app.UseStatusCodePages();
 			}
 			else
 			{

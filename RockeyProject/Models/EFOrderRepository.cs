@@ -24,7 +24,16 @@ namespace RockeyProject.Models
 			{
 				context.Orders.Add(order);
 			}
-			context.SaveChanges();
+			try
+			{
+				context.SaveChanges();
+
+			}
+			catch (System.Exception)
+			{
+
+				throw;
+			}
 		}
 	}
 }
